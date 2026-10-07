@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vl3ss — CTF-команда</title>
+  <meta name="description" content="Vl3ss — CTF-команда. Состав, результаты, достижения и райтапы.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <a class="nav-brand" href="#top">Vl3ss</a>
+  <div class="nav-links">
+    <a href="#team">Состав</a>
+    <a href="#results">Результаты</a>
+    <a href="#achievements">Достижения</a>
+    <a href="#writeups">Райтапы</a>
+    <a href="#contact">Контакты</a>
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Сменить тему">◐</button>
+  </div>
+</nav>
+
+<main id="top">
+
+  <section class="hero">
+    <span class="eyebrow" id="heroEyebrow">CTF-команда</span>
+    <h1 class="hero-title">Vl3ss</h1>
+    <p class="hero-lead">
+      Студенческая команда по информационной безопасности. Решаем CTF, разбираем уязвимости
+      и пишем райтапы — здесь собрано, кто мы, что умеем и где уже успели себя показать.
+    </p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#team">Познакомиться с командой</a>
+      <a class="btn btn-ghost" href="https://github.com/vl3ss" target="_blank" rel="noopener">GitHub команды</a>
+    </div>
+  </section>
+
+  <hr class="hr">
+
+  <section class="stats" aria-label="Цифры" id="stats"></section>
+
+  <hr class="hr">
+
+  <section id="team" class="section">
+    <span class="eyebrow">О нас</span>
+    <div class="section-head">
+      <h2>Состав</h2>
+      <div class="filters" id="skillFilters"></div>
+    </div>
+    <div class="team-grid" id="teamGrid"></div>
+  </section>
+
+  <hr class="hr">
+
+  <section id="results" class="section">
+    <span class="eyebrow">Результаты CTF</span>
+    <div class="section-head">
+      <h2>Соревнования</h2>
+      <div class="filters" id="formatFilters"></div>
+    </div>
+    <div class="table-wrap">
+      <div class="results" role="table" id="resultsTable"></div>
+    </div>
+  </section>
+
+  <hr class="hr">
+
+  <section id="achievements" class="section">
+    <span class="eyebrow">Достижения</span>
+    <h2>За пределами таблицы</h2>
+    <div class="ach-grid" id="achGrid"></div>
+  </section>
+
+  <hr class="hr">
+
+  <section id="writeups" class="section">
+    <span class="eyebrow">Райтапы</span>
+    <h2>Как мы это решили</h2>
+    <div class="writeup-grid" id="writeupGrid"></div>
+  </section>
+
+  <hr class="hr">
+
+  <section id="contact" class="section contact">
+    <span class="eyebrow">Контакты</span>
+    <h2>Ищем задачи и людей</h2>
+    <p class="contact-lead">
+      Открыты к стажировкам, совместным CTF и новым участникам в команду.
+      Напишите любому из нас в Telegram — ответим.
+    </p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="https://t.me/recently_was_good" target="_blank" rel="noopener">Написать в Telegram</a>
+      <a class="btn btn-ghost" href="https://github.com/vl3ss" target="_blank" rel="noopener">github.com/vl3ss</a>
+    </div>
+  </section>
+
+  <hr class="hr">
+
+  <footer class="footer">
+    <span>Vl3ss · CTF-команда · <span id="year"></span></span>
+    <div class="footer-links" id="footerLinks"></div>
+  </footer>
+</main>
+
+<div class="dialog-backdrop" id="dialog" hidden>
+  <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="dialogTitle">
+    <button class="dialog-close btn btn-ghost" type="button" id="dialogClose" aria-label="Закрыть">✕</button>
+    <div id="dialogContent"></div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
