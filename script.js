@@ -31,7 +31,7 @@ const MEMBERS = [
   {
     name: 'Velesova',
     role: 'Капитан команды',
-    skills: [],
+    skills: ['web', 'osint', 'infra'],
     bio: '',
     did: [],
     events: [],
@@ -84,16 +84,6 @@ function renderStats() {
 }
 
 // ---------- Участники ----------
-let skillFilter = 'all';
-
-function renderSkillFilters() {
-  const skills = ['all', ...new Set(MEMBERS.flatMap((m) => m.skills))];
-  $('#skillFilters').innerHTML = skills.map((s) => `
-    <button type="button" class="btn ${s === skillFilter ? 'btn-primary' : 'btn-ghost'}" data-skill="${esc(s)}">
-      ${s === 'all' ? 'Все' : esc(s)}
-    </button>`).join('');
-}
-
 function renderTeam() {
   $('#teamGrid').innerHTML = MEMBERS.map((m, i) => `
     <article class="card reveal" data-skills="${esc(m.skills.join(' '))}">
@@ -116,23 +106,7 @@ function renderTeam() {
         <button type="button" class="btn btn-ghost more" data-member="${i}">Подробнее →</button>
       </div>
     </article>`).join('');
-  applySkillFilter();
 }
-
-function applySkillFilter() {
-  document.querySelectorAll('#teamGrid .card').forEach((card) => {
-    const show = skillFilter === 'all' || card.dataset.skills.split(' ').includes(skillFilter);
-    card.classList.toggle('is-hidden', !show);
-  });
-}
-
-$('#skillFilters').addEventListener('click', (e) => {
-  const btn = e.target.closest('[data-skill]');
-  if (!btn) return;
-  skillFilter = btn.dataset.skill;
-  renderSkillFilters();
-  applySkillFilter();
-});
 
 // ---------- Подробное резюме участника ----------
 const dialog = $('#dialog');
@@ -293,7 +267,6 @@ function initObservers() {
 
 // ---------- Старт ----------
 renderStats();
-renderSkillFilters();
 renderTeam();
 renderResults();
 renderAchievements();
