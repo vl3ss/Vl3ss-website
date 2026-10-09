@@ -1,21 +1,26 @@
 const MEMBERS = [
   {
     name: 'recently_was_good',
-    role: 'Crypto · Forensics',
-    skills: ['crypto', 'forensics'],
-    bio: 'Капитан команды. Любит задачи, где нужно найти слабое место в математике шифра или восстановить данные из сырого дампа.',
+    role: 'SOC L1 · Blue Team · DFIR · Crypto',
+    skills: ['soc', 'dfir', 'forensics', 'crypto'],
+    bio: 'Лев Устинов — капитан команды, студент кафедры компьютерной безопасности ТОГУ (Хабаровск). Цель — SOC-аналитик L1 / Blue Team. Прохожу программу PT Start от Positive Technologies: разбираю сетевые атаки в PT NAD и Arkime, изучаю Linux, сегментацию сети и домен Windows/AD. Решаю DFIR-задачи на HackTheBox Sherlocks, играю в CTF и собираю домашний SIEM-стенд. Параллельно пишу backend на Python — FastAPI, PostgreSQL, Docker, CI/CD.',
     did: [
-      'Решил крипто-таск на атаку Винера по RSA',
-      'Восстановил флаг из дампа памяти через Volatility',
-      'Собрал командную базу райтапов',
+      'PT Start (Positive Technologies), трек Blue Team: анализ сетевых атак в PT NAD и Arkime',
+      'DFIR на HTB Sherlocks: расследовал SSH brute-force по auth.log и wtmp',
+      'Backend сервиса аренды аудиторий ТОГУ — REST API на FastAPI + PostgreSQL',
+      'Написал асинхронный фреймворк для ботов MAX: asyncio, FSM в Redis, webhook-секрет',
+      'Сетевые кейсы: VLSM-планирование, VPN и маршрутизация на MikroTik',
+      'Готовлю домашний SIEM-стенд на Linux/Windows-виртуалках',
     ],
-    events: ['DUCTF 2026', 'Ugra CTF 2026', 'MCTF 2025'],
+    events: ['Kaspersky CTF 2026', 'AvitoCTF 2026', 'Кубок Федерации 2026'],
     history: [
-      { year: '2026', text: 'Капитан Vl3ss, основной по crypto' },
-      { year: '2025', text: 'Первые CTF, начало пути в ИБ' },
+      { year: '2026', text: 'PT Start (Blue Team) от Positive Technologies, домашний SIEM-стенд, капитан Vl3ss' },
+      { year: '2025', text: 'Старт в ИБ: HTB Sherlocks и первые CTF; backend сервиса аренды аудиторий ТОГУ' },
+      { year: '2030', text: 'Выпуск ТОГУ по специальности «Компьютерная безопасность»' },
     ],
     github: 'https://github.com/vl3ss',
     tg: '@recently_was_good',
+    resume: 'https://github.com/ustinovlev039-cpu',
   },
   {
     name: 'Velesova',
@@ -27,7 +32,7 @@ const MEMBERS = [
       'Распутала OSINT-цепочку по фото до точного адреса',
       'Развернула командный сервер для Attack-Defense',
     ],
-    events: ['SPbCTF 2026', 'MCTF 2025', 'DUCTF 2026'],
+    events: ['Kaspersky CTF 2026', 'AvitoCTF 2026', 'Кубок Федерации 2026'],
     history: [
       { year: '2026', text: 'Web и инфраструктура в Vl3ss' },
       { year: '2025', text: 'Летняя школа AppSec' },
@@ -35,56 +40,17 @@ const MEMBERS = [
     github: 'https://github.com/vl3ss',
     tg: '@Svarozhuch',
   },
-  {
-    name: 'Участник 3',
-    placeholder: true,
-    role: 'Pwn · Reverse',
-    skills: ['pwn', 'reverse'],
-    bio: 'Место для нового участника: коротко о себе — чем занимается и что больше всего нравится решать.',
-    did: [
-      'Пример: эксплуатация переполнения буфера (ret2libc)',
-      'Пример: разбор кастомной VM в реверсе',
-    ],
-    events: ['Название CTF 2026', 'Название CTF 2025'],
-    history: [{ year: '2026', text: 'Присоединился к Vl3ss' }],
-    github: 'https://github.com/vl3ss',
-    tg: '@username',
-  },
-  {
-    name: 'Участник 4',
-    placeholder: true,
-    role: 'Reverse · Mobile',
-    skills: ['reverse', 'mobile'],
-    bio: 'Место для нового участника: коротко о себе — чем занимается и что больше всего нравится решать.',
-    did: [
-      'Пример: обход проверки лицензии в APK',
-      'Пример: деобфускация .NET-бинаря',
-    ],
-    events: ['Название CTF 2026'],
-    history: [{ year: '2026', text: 'Присоединился к Vl3ss' }],
-    github: 'https://github.com/vl3ss',
-    tg: '@username',
-  },
-  {
-    name: 'Участник 5',
-    placeholder: true,
-    role: 'Stego · Misc · PPC',
-    skills: ['stego', 'misc', 'ppc'],
-    bio: 'Место для нового участника: коротко о себе — чем занимается и что больше всего нравится решать.',
-    did: [
-      'Пример: извлечение данных из LSB картинки',
-      'Пример: скрипт для PPC-таска на графы',
-    ],
-    events: ['Название CTF 2026'],
-    history: [{ year: '2026', text: 'Присоединился к Vl3ss' }],
-    github: 'https://github.com/vl3ss',
-    tg: '@username',
-  },
 ];
 
-// Результаты соревнований. format: 'jeopardy' | 'ad'
-// Пример: { name: 'DUCTF 2026', date: '2026-07-18', place: 42, points: 3120, format: 'jeopardy' }
-const RESULTS = [];
+// Результаты соревнований
+const RESULTS = [
+  { name: 'Kaspersky CTF', year: 2026, place: 62, teams: 350 },
+  { name: 'AvitoCTF', year: 2026, place: 79, teams: 350 },
+  { name: 'Кубок Федерации', year: 2026, place: 112, teams: 350 },
+];
+
+// Райтапы: пока пусто — добавим позже самые крупные и сложные таски
+const WRITEUPS = [];
 
 const ACHIEVEMENTS = [
   { kind: 'Стажировки', items: [{ title: 'Стажировка в SOC', meta: 'Компания · 2026' }, { title: 'Летняя школа AppSec', meta: 'Организатор · 2025' }] },
@@ -93,15 +59,6 @@ const ACHIEVEMENTS = [
   { kind: 'Исследования', items: [{ title: 'Тема исследования или CVE', meta: 'Публикация · 2026' }] },
 ];
 
-const WRITEUPS = [
-  { cat: 'crypto', ctf: 'DUCTF 2026', title: 'Название таска', summary: 'Коротко: в чём была уязвимость и как получили флаг.', href: '#' },
-  { cat: 'web', ctf: 'MCTF 2025', title: 'Название таска', summary: 'Коротко: в чём была уязвимость и как получили флаг.', href: '#' },
-  { cat: 'forensics', ctf: 'Ugra CTF 2026', title: 'Название таска', summary: 'Коротко: что было в артефакте и как нашли флаг.', href: '#' },
-  { cat: 'osint', ctf: 'SPbCTF 2026', title: 'Название таска', summary: 'Коротко: от какой зацепки шли и к чему пришли.', href: '#' },
-];
-
-const MONTHS = ['янв', 'фев', 'мар', 'апр', 'мая', 'июн', 'июл', 'авг', 'сен', 'окт', 'ноя', 'дек'];
-const fmtDate = (d) => { const [y, m, day] = d.split('-'); return `${+day} ${MONTHS[+m - 1]} ${y}`; };
 const fmtNum = (n) => n.toLocaleString('ru-RU');
 const $ = (sel) => document.querySelector(sel);
 
@@ -109,25 +66,27 @@ function esc(s) {
   return String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 }
 const tgUrl = (tg) => 'https://t.me/' + tg.replace(/^@/, '');
+// Контакт, который показываем в карточке каждого участника (в футере — личные tg)
+const CARD_TG = '@Svarozhuch';
 const initials = (name) => name.replace(/[^A-Za-zА-Яа-я0-9]/g, '').slice(0, 2).toUpperCase() || '?';
 const list = (items) => `<ul class="card-list">${items.map((i) => `<li>${esc(i)}</li>`).join('')}</ul>`;
 
 // ---------- Цифры ----------
 function renderStats() {
-  const realMembers = MEMBERS.filter((m) => !m.placeholder).length;
-  const allEvents = new Set(MEMBERS.flatMap((m) => (m.placeholder ? [] : m.events)));
+  const bestPlace = RESULTS.length ? Math.min(...RESULTS.map((r) => r.place)) : null;
+  const avgPlace = RESULTS.length ? Math.round(RESULTS.reduce((s, r) => s + r.place, 0) / RESULTS.length) : null;
   const stats = [
     { value: MEMBERS.length, label: 'Участников в составе' },
-    { value: RESULTS.length || allEvents.size || '—', label: 'CTF сыграно' },
-    { value: RESULTS.length ? Math.min(...RESULTS.map((r) => r.place)) : '—', label: 'Лучшее место', accent: true },
-    { value: RESULTS.length ? fmtNum(RESULTS.reduce((s, r) => s + r.points, 0)) : '—', label: 'Очков всего' },
+    { value: RESULTS.length || '—', label: 'CTF сыграно' },
+    { value: bestPlace ?? '—', label: 'Лучшее место', accent: true },
+    { value: avgPlace ?? '—', label: 'Среднее место' },
   ];
   $('#stats').innerHTML = stats.map((s) => `
     <div>
       <p class="stat-value${s.accent ? ' accent' : ''}" data-count="${typeof s.value === 'number' ? s.value : ''}">${esc(s.value)}</p>
       <p class="stat-label">${esc(s.label)}</p>
     </div>`).join('');
-  $('#heroEyebrow').textContent = `CTF-команда · ${MEMBERS.length} участников` + (realMembers < MEMBERS.length ? ` · набор открыт` : '');
+  $('#heroEyebrow').textContent = `CTF-команда · ${MEMBERS.length} участников`;
 }
 
 // ---------- Участники ----------
@@ -145,10 +104,10 @@ function renderTeam() {
   $('#teamGrid').innerHTML = MEMBERS.map((m, i) => `
     <article class="card reveal" data-skills="${esc(m.skills.join(' '))}">
       <div class="card-top">
-        <div class="avatar" aria-hidden="true">${m.placeholder ? '?' : esc(initials(m.name))}</div>
+        <div class="avatar" aria-hidden="true">${esc(initials(m.name))}</div>
         <div>
           <span class="card-kicker">${esc(m.role)}</span>
-          <h3 class="card-title">${m.placeholder ? `<span class="placeholder">${esc(m.name)}</span>` : esc(m.name)}</h3>
+          <h3 class="card-title">${esc(m.name)}</h3>
         </div>
       </div>
       <div class="tags">${m.skills.map((s) => `<span class="tag tag-outline">${esc(s)}</span>`).join('')}</div>
@@ -162,8 +121,9 @@ function renderTeam() {
         <div class="tags">${m.events.map((e) => `<span class="tag tag-neutral">${esc(e)}</span>`).join('')}</div>
       </div>
       <div class="card-foot">
+        ${m.resume ? `<a class="resume-link" href="${esc(m.resume)}" target="_blank" rel="noopener"><span class="resume-ico" aria-hidden="true">❖</span> Резюме на GitHub</a>` : ''}
         <a href="${esc(m.github)}" target="_blank" rel="noopener">GitHub</a>
-        <a href="${esc(tgUrl(m.tg))}" target="_blank" rel="noopener">${esc(m.tg)}</a>
+        <a href="${esc(tgUrl(CARD_TG))}" target="_blank" rel="noopener">${esc(CARD_TG)}</a>
         <button type="button" class="btn btn-ghost more" data-member="${i}">Подробнее →</button>
       </div>
     </article>`).join('');
@@ -194,7 +154,7 @@ function openMember(i) {
   $('#dialogContent').innerHTML = `
     <section>
       <div class="card-top">
-        <div class="avatar" aria-hidden="true">${m.placeholder ? '?' : esc(initials(m.name))}</div>
+        <div class="avatar" aria-hidden="true">${esc(initials(m.name))}</div>
         <div>
           <span class="card-kicker">${esc(m.role)}</span>
           <h3 class="card-title" id="dialogTitle">${esc(m.name)}</h3>
@@ -210,8 +170,9 @@ function openMember(i) {
       <ul class="timeline">${m.history.map((h) => `<li><span class="year">${esc(h.year)}</span><span>${esc(h.text)}</span></li>`).join('')}</ul>
     </section>
     <section class="card-foot" style="margin-top:0">
+      ${m.resume ? `<a class="resume-link" href="${esc(m.resume)}" target="_blank" rel="noopener"><span class="resume-ico" aria-hidden="true">❖</span> Резюме на GitHub</a>` : ''}
       <a href="${esc(m.github)}" target="_blank" rel="noopener">GitHub</a>
-      <a href="${esc(tgUrl(m.tg))}" target="_blank" rel="noopener">${esc(m.tg)}</a>
+      <a href="${esc(tgUrl(CARD_TG))}" target="_blank" rel="noopener">${esc(CARD_TG)}</a>
     </section>`;
   lastFocus = document.activeElement;
   dialog.hidden = false;
@@ -234,56 +195,31 @@ dialog.addEventListener('click', (e) => { if (e.target === dialog) closeMember()
 document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !dialog.hidden) closeMember(); });
 
 // ---------- Результаты ----------
-let format = 'all';
-
 function renderResults() {
-  $('#formatFilters').innerHTML = [['all', 'Все'], ['jeopardy', 'CTF'], ['ad', 'Attack-Defense']]
-    .map(([k, label]) => `<button type="button" class="btn ${k === format ? 'btn-primary' : 'btn-ghost'}" data-format="${k}">${label}</button>`)
-    .join('');
-
-  const rows = RESULTS
-    .filter((r) => format === 'all' || r.format === format)
-    .sort((a, b) => b.date.localeCompare(a.date));
+  const rows = [...RESULTS].sort((a, b) => a.place - b.place);
 
   const head = `
     <div class="row head" role="row">
       <span role="columnheader">Соревнование</span>
-      <span role="columnheader">Дата</span>
+      <span role="columnheader">Год</span>
       <span role="columnheader" class="num">Место</span>
-      <span role="columnheader" class="num">Очки</span>
-      <span role="columnheader">Формат</span>
+      <span role="columnheader" class="num">Команд</span>
     </div>`;
 
   const body = rows.length
     ? rows.map((r) => `
       <div class="row" role="row">
         <span role="cell" class="name">${esc(r.name)}</span>
-        <span role="cell">${fmtDate(r.date)}</span>
-        <span role="cell" class="num">${r.place}</span>
-        <span role="cell" class="num">${fmtNum(r.points)}</span>
-        <span role="cell"><span class="tag ${r.format === 'ad' ? 'tag-accent' : 'tag-neutral'}">${r.format === 'ad' ? 'Attack-Defense' : 'CTF'}</span></span>
+        <span role="cell">${esc(r.year)}</span>
+        <span role="cell" class="num">${esc(r.place)}</span>
+        <span role="cell" class="num">${fmtNum(r.teams)}</span>
       </div>`).join('')
     : `<p class="empty">Результаты скоро появятся — добавьте их в массив RESULTS в script.js.</p>`;
 
   $('#resultsTable').innerHTML = head + body;
 }
 
-$('#formatFilters').addEventListener('click', (e) => {
-  const btn = e.target.closest('[data-format]');
-  if (!btn) return;
-  format = btn.dataset.format;
-  renderResults();
-});
-
-// ---------- Достижения и райтапы ----------
-function renderAchievements() {
-  $('#achGrid').innerHTML = ACHIEVEMENTS.map((g) => `
-    <div class="ach-col reveal">
-      <span class="eyebrow" style="margin:0">${esc(g.kind)}</span>
-      ${g.items.map((it) => `<div class="ach-item"><p>${esc(it.title)}</p><p>${esc(it.meta)}</p></div>`).join('')}
-    </div>`).join('');
-}
-
+// ---------- Райтапы ----------
 function renderWriteups() {
   $('#writeupGrid').innerHTML = WRITEUPS.map((w) => `
     <a class="card writeup reveal" href="${esc(w.href)}">
@@ -294,9 +230,18 @@ function renderWriteups() {
     </a>`).join('');
 }
 
+// ---------- Достижения ----------
+function renderAchievements() {
+  $('#achGrid').innerHTML = ACHIEVEMENTS.map((g) => `
+    <div class="ach-col reveal">
+      <span class="eyebrow" style="margin:0">${esc(g.kind)}</span>
+      ${g.items.map((it) => `<div class="ach-item"><p>${esc(it.title)}</p><p>${esc(it.meta)}</p></div>`).join('')}
+    </div>`).join('');
+}
+
 function renderFooter() {
   const links = [{ href: 'https://github.com/vl3ss', label: 'github.com/vl3ss' }]
-    .concat(MEMBERS.filter((m) => !m.placeholder).map((m) => ({ href: tgUrl(m.tg), label: m.tg })));
+    .concat(MEMBERS.map((m) => ({ href: tgUrl(m.tg), label: m.tg })));
   $('#footerLinks').innerHTML = links.map((l) => `<a href="${esc(l.href)}" target="_blank" rel="noopener">${esc(l.label)}</a>`).join('');
   $('#year').textContent = new Date().getFullYear();
 }

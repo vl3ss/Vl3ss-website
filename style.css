@@ -183,12 +183,26 @@ main { max-width: 1200px; margin: 0 auto; padding: 0 var(--gutter); }
   margin-top: auto; padding-top: 16px; border-top: 1px solid var(--color-divider); font-size: 15px;
 }
 .card-foot .more { margin-left: auto; padding: 4px 8px; font-size: 14px; }
+.resume-link {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-family: var(--font-heading); font-weight: 600; font-size: 14px; line-height: 1;
+  color: var(--color-accent-ink); text-decoration: none;
+  padding: 7px 14px; border: 1px solid var(--color-accent); border-radius: 999px;
+  background: var(--color-accent-soft);
+  transition: background .2s, transform .2s, box-shadow .2s;
+}
+.resume-link:hover {
+  color: var(--color-accent-ink);
+  background: color-mix(in srgb, var(--color-accent) 22%, transparent);
+  transform: translateY(-1px); box-shadow: var(--shadow-md);
+}
+.resume-link .resume-ico { color: var(--color-accent-strong); font-size: 13px; }
 
 /* ---------- Таблица результатов ---------- */
 .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-.results { min-width: 600px; border-top: 1px solid var(--color-text); font-feature-settings: 'tnum' 1; }
+.results { min-width: 480px; border-top: 1px solid var(--color-text); font-feature-settings: 'tnum' 1; }
 .results .row {
-  display: grid; grid-template-columns: minmax(0, 2.4fr) 1.2fr .7fr .8fr 1.3fr;
+  display: grid; grid-template-columns: minmax(0, 2.4fr) 1fr .9fr 1fr;
   gap: 16px; align-items: center; padding: 14px 0;
   border-bottom: 1px solid var(--color-divider); font-size: 15px;
 }
