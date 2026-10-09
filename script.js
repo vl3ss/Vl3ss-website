@@ -3,7 +3,7 @@ const MEMBERS = [
     name: 'recently_was_good',
     role: 'Аналитик SOC (L1)',
     skills: ['soc', 'dfir', 'forensics', 'crypto'],
-    bio: 'Студент кафедры компьютерной безопасности ТОГУ, ищу стажировку или позицию аналитика SOC (L1). Прохожу программу PT Start от Positive Technologies на треке Blue Team: разбираю сетевые атаки в PT NAD и Arkime. Решаю DFIR-задачи HackTheBox Sherlocks, участвую в CTF, готовлю домашний стенд под SIEM. Linux — основная рабочая ОС; пишу на Python и Bash, работаю с Docker и сетями.',
+    bio: 'Студент кафедры компьютерной безопасности ТОГУ. Стажируюсь в PT Start от Positive Technologies на треке Blue Team: разбираю сетевые атаки в PT NAD и Arkime. Решаю DFIR-задачи HackTheBox Sherlocks, участвую в CTF, готовлю домашний стенд под SIEM. Linux — основная рабочая ОС; пишу на Python и Bash, работаю с Docker и сетями.',
     did: [
       'PT Start (Positive Technologies), трек Blue Team: анализ сетевых атак в PT NAD и Arkime',
       'DFIR на HTB Sherlocks: расследовал SSH brute-force по auth.log и wtmp',
@@ -13,6 +13,12 @@ const MEMBERS = [
       'Готовлю домашний SIEM-стенд на Linux/Windows-виртуалках',
     ],
     events: ['Kaspersky CTF 2026', 'AvitoCTF 2026', 'Кубок Федерации 2026'],
+    certs: [
+      'Yandex Cloud — Инженер облачных технологий, 2026',
+      'Yandex Cloud — Контейнеризация с Docker, 2026',
+      'Skypro — Python-разработчик, 2026',
+      'Слёрм — Linux для начинающих (в процессе), 2026',
+    ],
     history: [
       { year: '2026', text: 'PT Start (Blue Team) от Positive Technologies, домашний SIEM-стенд, участник Vl3ss' },
       { year: '2025', text: 'Старт в ИБ: HTB Sherlocks и первые CTF; backend сервиса аренды аудиторий ТОГУ' },
@@ -29,6 +35,7 @@ const MEMBERS = [
     bio: '',
     did: [],
     events: [],
+    certs: [],
     history: [],
     github: 'https://github.com/vl3ss',
     tg: '@Svarozhuch',
@@ -101,6 +108,7 @@ function renderTeam() {
       ${m.bio ? `<p class="card-bio">${esc(m.bio)}</p>` : ''}
       ${m.did.length ? `<div class="card-block"><h4>Что сделал</h4>${list(m.did)}</div>` : ''}
       ${m.events.length ? `<div class="card-block"><h4>Где участвовал</h4><div class="tags">${m.events.map((e) => `<span class="tag tag-neutral">${esc(e)}</span>`).join('')}</div></div>` : ''}
+      ${(m.certs && m.certs.length) ? `<div class="card-block"><h4>Сертификаты</h4>${list(m.certs)}</div>` : ''}
       <div class="card-foot">
         ${m.resume ? `<a class="resume-link" href="${esc(m.resume)}" target="_blank" rel="noopener"><span class="resume-ico" aria-hidden="true">❖</span> Резюме на GitHub</a>` : ''}
         <a href="${esc(m.github)}" target="_blank" rel="noopener">GitHub</a>
@@ -147,6 +155,7 @@ function openMember(i) {
     ${m.events.length ? `<section class="card-block"><h4>Где участвовал</h4>
       <div class="tags">${m.events.map((e) => `<span class="tag tag-neutral">${esc(e)}</span>`).join('')}</div>
     </section>` : ''}
+    ${(m.certs && m.certs.length) ? `<section class="card-block"><h4>Сертификаты</h4>${list(m.certs)}</section>` : ''}
     ${m.history.length ? `<section class="card-block"><h4>Хронология</h4>
       <ul class="timeline">${m.history.map((h) => `<li><span class="year">${esc(h.year)}</span><span>${esc(h.text)}</span></li>`).join('')}</ul>
     </section>` : ''}
