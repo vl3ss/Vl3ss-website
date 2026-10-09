@@ -200,16 +200,18 @@ main { max-width: 1200px; margin: 0 auto; padding: 0 var(--gutter); }
 
 /* ---------- Таблица результатов ---------- */
 .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-.results { min-width: 480px; border-top: 1px solid var(--color-text); font-feature-settings: 'tnum' 1; }
+.results { min-width: 420px; border-top: 1px solid var(--color-text); font-feature-settings: 'tnum' 1; }
 .results .row {
-  display: grid; grid-template-columns: minmax(0, 2.4fr) 1fr .9fr 1fr;
-  gap: 16px; align-items: center; padding: 14px 0;
+  display: grid; grid-template-columns: minmax(0, 1fr) 100px 120px;
+  gap: 24px; align-items: center; padding: 16px 4px;
   border-bottom: 1px solid var(--color-divider); font-size: 15px;
 }
 .results .row:not(.head):hover { background: var(--color-accent-soft); }
-.results .head { padding: 12px 0; border-bottom-color: var(--color-text); font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--color-muted); }
-.results .name { font-family: var(--font-heading); font-size: 19px; }
-.results .num { text-align: right; }
+.results .head { padding: 12px 4px; border-bottom-color: var(--color-text); font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--color-muted); }
+.results .name { font-family: var(--font-heading); font-size: 20px; }
+.results .num { text-align: right; font-variant-numeric: tabular-nums; }
+.results .place { font-family: var(--font-heading); font-size: 22px; color: var(--color-accent); }
+.results .place-total { color: var(--color-muted); font-size: 14px; }
 .results .empty { padding: 28px 0; color: var(--color-muted); font-style: italic; }
 
 /* ---------- Достижения ---------- */

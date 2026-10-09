@@ -1,9 +1,9 @@
 const MEMBERS = [
   {
     name: 'recently_was_good',
-    role: 'SOC L1 · Blue Team · DFIR · Crypto',
+    role: 'Аналитик SOC (L1)',
     skills: ['soc', 'dfir', 'forensics', 'crypto'],
-    bio: 'Лев Устинов — капитан команды, студент кафедры компьютерной безопасности ТОГУ (Хабаровск). Цель — SOC-аналитик L1 / Blue Team. Прохожу программу PT Start от Positive Technologies: разбираю сетевые атаки в PT NAD и Arkime, изучаю Linux, сегментацию сети и домен Windows/AD. Решаю DFIR-задачи на HackTheBox Sherlocks, играю в CTF и собираю домашний SIEM-стенд. Параллельно пишу backend на Python — FastAPI, PostgreSQL, Docker, CI/CD.',
+    bio: 'Студент кафедры компьютерной безопасности ТОГУ, ищу стажировку или позицию аналитика SOC (L1). Прохожу программу PT Start от Positive Technologies на треке Blue Team: разбираю сетевые атаки в PT NAD и Arkime. Решаю DFIR-задачи HackTheBox Sherlocks, участвую в CTF, готовлю домашний стенд под SIEM. Linux — основная рабочая ОС; пишу на Python и Bash, работаю с Docker и сетями.',
     did: [
       'PT Start (Positive Technologies), трек Blue Team: анализ сетевых атак в PT NAD и Arkime',
       'DFIR на HTB Sherlocks: расследовал SSH brute-force по auth.log и wtmp',
@@ -14,7 +14,7 @@ const MEMBERS = [
     ],
     events: ['Kaspersky CTF 2026', 'AvitoCTF 2026', 'Кубок Федерации 2026'],
     history: [
-      { year: '2026', text: 'PT Start (Blue Team) от Positive Technologies, домашний SIEM-стенд, капитан Vl3ss' },
+      { year: '2026', text: 'PT Start (Blue Team) от Positive Technologies, домашний SIEM-стенд, участник Vl3ss' },
       { year: '2025', text: 'Старт в ИБ: HTB Sherlocks и первые CTF; backend сервиса аренды аудиторий ТОГУ' },
       { year: '2030', text: 'Выпуск ТОГУ по специальности «Компьютерная безопасность»' },
     ],
@@ -24,19 +24,12 @@ const MEMBERS = [
   },
   {
     name: 'Velesova',
-    role: 'Web · OSINT · Infra',
-    skills: ['web', 'osint', 'infra'],
-    bio: 'Отвечает за веб и разведку. Поднимает инфраструктуру команды и находит то, что спрятано в открытых источниках.',
-    did: [
-      'Нашла SSTI в шаблонизаторе и получила RCE',
-      'Распутала OSINT-цепочку по фото до точного адреса',
-      'Развернула командный сервер для Attack-Defense',
-    ],
-    events: ['Kaspersky CTF 2026', 'AvitoCTF 2026', 'Кубок Федерации 2026'],
-    history: [
-      { year: '2026', text: 'Web и инфраструктура в Vl3ss' },
-      { year: '2025', text: 'Летняя школа AppSec' },
-    ],
+    role: 'Капитан команды',
+    skills: [],
+    bio: '',
+    did: [],
+    events: [],
+    history: [],
     github: 'https://github.com/vl3ss',
     tg: '@Svarozhuch',
   },
@@ -52,12 +45,8 @@ const RESULTS = [
 // Райтапы: пока пусто — добавим позже самые крупные и сложные таски
 const WRITEUPS = [];
 
-const ACHIEVEMENTS = [
-  { kind: 'Стажировки', items: [{ title: 'Стажировка в SOC', meta: 'Компания · 2026' }, { title: 'Летняя школа AppSec', meta: 'Организатор · 2025' }] },
-  { kind: 'Конкурсы', items: [{ title: 'Призёр студенческой олимпиады по ИБ', meta: '2 место · 2026' }] },
-  { kind: 'Сертификаты', items: [{ title: 'Название сертификата', meta: 'Выдан · 2025' }, { title: 'Название сертификата', meta: 'Выдан · 2025' }] },
-  { kind: 'Исследования', items: [{ title: 'Тема исследования или CVE', meta: 'Публикация · 2026' }] },
-];
+// За пределами таблицы: пока пусто — заполним позже
+const ACHIEVEMENTS = [];
 
 const fmtNum = (n) => n.toLocaleString('ru-RU');
 const $ = (sel) => document.querySelector(sel);
@@ -66,8 +55,6 @@ function esc(s) {
   return String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 }
 const tgUrl = (tg) => 'https://t.me/' + tg.replace(/^@/, '');
-// Контакт, который показываем в карточке каждого участника (в футере — личные tg)
-const CARD_TG = '@Svarozhuch';
 const initials = (name) => name.replace(/[^A-Za-zА-Яа-я0-9]/g, '').slice(0, 2).toUpperCase() || '?';
 const list = (items) => `<ul class="card-list">${items.map((i) => `<li>${esc(i)}</li>`).join('')}</ul>`;
 
@@ -110,20 +97,14 @@ function renderTeam() {
           <h3 class="card-title">${esc(m.name)}</h3>
         </div>
       </div>
-      <div class="tags">${m.skills.map((s) => `<span class="tag tag-outline">${esc(s)}</span>`).join('')}</div>
-      <p class="card-bio">${esc(m.bio)}</p>
-      <div class="card-block">
-        <h4>Что сделал</h4>
-        ${list(m.did)}
-      </div>
-      <div class="card-block">
-        <h4>Где участвовал</h4>
-        <div class="tags">${m.events.map((e) => `<span class="tag tag-neutral">${esc(e)}</span>`).join('')}</div>
-      </div>
+      ${m.skills.length ? `<div class="tags">${m.skills.map((s) => `<span class="tag tag-outline">${esc(s)}</span>`).join('')}</div>` : ''}
+      ${m.bio ? `<p class="card-bio">${esc(m.bio)}</p>` : ''}
+      ${m.did.length ? `<div class="card-block"><h4>Что сделал</h4>${list(m.did)}</div>` : ''}
+      ${m.events.length ? `<div class="card-block"><h4>Где участвовал</h4><div class="tags">${m.events.map((e) => `<span class="tag tag-neutral">${esc(e)}</span>`).join('')}</div></div>` : ''}
       <div class="card-foot">
         ${m.resume ? `<a class="resume-link" href="${esc(m.resume)}" target="_blank" rel="noopener"><span class="resume-ico" aria-hidden="true">❖</span> Резюме на GitHub</a>` : ''}
         <a href="${esc(m.github)}" target="_blank" rel="noopener">GitHub</a>
-        <a href="${esc(tgUrl(CARD_TG))}" target="_blank" rel="noopener">${esc(CARD_TG)}</a>
+        <a href="${esc(tgUrl(m.tg))}" target="_blank" rel="noopener">${esc(m.tg)}</a>
         <button type="button" class="btn btn-ghost more" data-member="${i}">Подробнее →</button>
       </div>
     </article>`).join('');
@@ -160,19 +141,19 @@ function openMember(i) {
           <h3 class="card-title" id="dialogTitle">${esc(m.name)}</h3>
         </div>
       </div>
-      <p class="card-bio" style="margin-top:16px">${esc(m.bio)}</p>
+      ${m.bio ? `<p class="card-bio" style="margin-top:16px">${esc(m.bio)}</p>` : ''}
     </section>
-    <section class="card-block"><h4>Что сделал</h4>${list(m.did)}</section>
-    <section class="card-block"><h4>Где участвовал</h4>
+    ${m.did.length ? `<section class="card-block"><h4>Что сделал</h4>${list(m.did)}</section>` : ''}
+    ${m.events.length ? `<section class="card-block"><h4>Где участвовал</h4>
       <div class="tags">${m.events.map((e) => `<span class="tag tag-neutral">${esc(e)}</span>`).join('')}</div>
-    </section>
-    <section class="card-block"><h4>Хронология</h4>
+    </section>` : ''}
+    ${m.history.length ? `<section class="card-block"><h4>Хронология</h4>
       <ul class="timeline">${m.history.map((h) => `<li><span class="year">${esc(h.year)}</span><span>${esc(h.text)}</span></li>`).join('')}</ul>
-    </section>
+    </section>` : ''}
     <section class="card-foot" style="margin-top:0">
       ${m.resume ? `<a class="resume-link" href="${esc(m.resume)}" target="_blank" rel="noopener"><span class="resume-ico" aria-hidden="true">❖</span> Резюме на GitHub</a>` : ''}
       <a href="${esc(m.github)}" target="_blank" rel="noopener">GitHub</a>
-      <a href="${esc(tgUrl(CARD_TG))}" target="_blank" rel="noopener">${esc(CARD_TG)}</a>
+      <a href="${esc(tgUrl(m.tg))}" target="_blank" rel="noopener">${esc(m.tg)}</a>
     </section>`;
   lastFocus = document.activeElement;
   dialog.hidden = false;
@@ -201,18 +182,16 @@ function renderResults() {
   const head = `
     <div class="row head" role="row">
       <span role="columnheader">Соревнование</span>
-      <span role="columnheader">Год</span>
+      <span role="columnheader" class="num">Год</span>
       <span role="columnheader" class="num">Место</span>
-      <span role="columnheader" class="num">Команд</span>
     </div>`;
 
   const body = rows.length
     ? rows.map((r) => `
       <div class="row" role="row">
         <span role="cell" class="name">${esc(r.name)}</span>
-        <span role="cell">${esc(r.year)}</span>
-        <span role="cell" class="num">${esc(r.place)}</span>
-        <span role="cell" class="num">${fmtNum(r.teams)}</span>
+        <span role="cell" class="num">${esc(r.year)}</span>
+        <span role="cell" class="num"><span class="place">${esc(r.place)}</span><span class="place-total"> / ${fmtNum(r.teams)}</span></span>
       </div>`).join('')
     : `<p class="empty">Результаты скоро появятся — добавьте их в массив RESULTS в script.js.</p>`;
 
