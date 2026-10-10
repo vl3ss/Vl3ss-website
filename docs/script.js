@@ -30,15 +30,28 @@ const MEMBERS = [
   },
   {
     name: 'Velesova',
-    role: 'Капитан команды',
+    role: 'Капитан · Web · OSINT · Infra',
     skills: ['web', 'osint', 'infra'],
-    bio: '',
-    did: [],
-    events: [],
-    certs: [],
-    history: [],
+    bio: 'Капитан Vl3ss. Организую работу команды, формирую стек исследований и отвечаю за развитие направлений Web Security, Infrastructure и OSINT. Фокусируюсь на практическом анализе защищённости, сборке кастомных Linux-систем и исследовании векторов атак.',
+    did: [
+      'Leadership & Audit Prep: руководство CTF-командой, координация разборов задач (writeups), взаимодействие со специалистами и CISO отрасли',
+      'Linux & Low-Level: сборка кастомной ОС из исходников (Linux From Scratch, до 6 главы), администрирование и настройка сетевой инфраструктуры',
+      'Application & Infra Security: поиск Low/Medium уязвимостей в рамках Bug Bounty, настройка фаерволов, анализ конфигураций SIEM',
+    ],
+    events: ['Kaspersky CTF 2026', 'AvitoCTF 2026', 'Кубок Федерации 2026', 'АльфаCTF 2025'],
+    certs: [
+      'Cybered — «Профессия Белый Хакер»',
+      'ДВФУ — «SQL»',
+      'Практический интенсив по работе с SIEM и настройке фаерволов',
+      'Благодарственное письмо с конференции «Код Профи»',
+    ],
+    history: [
+      { year: '2026', text: 'Капитан Vl3ss; Kaspersky CTF, AvitoCTF, Кубок Федерации' },
+      { year: '2025', text: 'АльфаCTF; обучение: «Профессия Белый Хакер» (Cybered), SQL (ДВФУ)' },
+    ],
     github: 'https://github.com/vl3ss',
     tg: '@Svarozhuch',
+    resume: 'https://github.com/Mara-hack',
   },
 ];
 
@@ -235,11 +248,12 @@ function initObservers() {
     document.querySelectorAll('.reveal').forEach((el) => el.classList.add('visible'));
     return;
   }
+  // Появление срабатывает в обе стороны: и при прокрутке вниз, и при прокрутке вверх
   const revealObs = new IntersectionObserver((entries) => {
     entries.forEach((en) => {
-      if (en.isIntersecting) { en.target.classList.add('visible'); revealObs.unobserve(en.target); }
+      en.target.classList.toggle('visible', en.isIntersecting);
     });
-  }, { threshold: 0.12 });
+  }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
   document.querySelectorAll('.reveal').forEach((el) => revealObs.observe(el));
 
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
