@@ -86,7 +86,7 @@ function renderStats() {
 // ---------- Участники ----------
 function renderTeam() {
   $('#teamGrid').innerHTML = MEMBERS.map((m, i) => `
-    <article class="card reveal" data-skills="${esc(m.skills.join(' '))}">
+    <article class="card reveal" data-member="${i}" data-skills="${esc(m.skills.join(' '))}" tabindex="0" role="button" aria-label="${esc('Открыть профиль: ' + m.name)}">
       <div class="card-top">
         <div class="avatar" aria-hidden="true">${esc(initials(m.name))}</div>
         <div>
@@ -103,7 +103,6 @@ function renderTeam() {
         ${m.resume ? `<a class="resume-link" href="${esc(m.resume)}" target="_blank" rel="noopener"><span class="resume-ico" aria-hidden="true">❖</span> Резюме на GitHub</a>` : ''}
         <a href="${esc(m.github)}" target="_blank" rel="noopener">GitHub</a>
         <a href="${esc(tgUrl(m.tg))}" target="_blank" rel="noopener">${esc(m.tg)}</a>
-        <button type="button" class="btn btn-ghost more" data-member="${i}">Подробнее →</button>
       </div>
     </article>`).join('');
 }
@@ -151,8 +150,14 @@ function closeMember() {
 }
 
 $('#teamGrid').addEventListener('click', (e) => {
-  const btn = e.target.closest('[data-member]');
-  if (btn) openMember(+btn.dataset.member);
+  if (e.target.closest('a')) return; // клики по ссылкам (GitHub/Telegram/резюме) работают сами
+  const card = e.target.closest('[data-member]');
+  if (card) openMember(+card.dataset.member);
+});
+$('#teamGrid').addEventListener('keydown', (e) => {
+  if (e.key !== 'Enter' && e.key !== ' ') return;
+  const card = e.target.closest('[data-member]');
+  if (card && e.target === card) { e.preventDefault(); openMember(+card.dataset.member); }
 });
 $('#dialogClose').addEventListener('click', closeMember);
 dialog.addEventListener('click', (e) => { if (e.target === dialog) closeMember(); });

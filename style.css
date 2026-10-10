@@ -50,7 +50,7 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: 76px; }
 body {
   margin: 0;
   background: var(--color-bg);
@@ -92,6 +92,7 @@ a:hover { color: var(--color-accent); }
 .tag {
   display: inline-flex; align-items: center; font-size: 11px; letter-spacing: .02em;
   padding: 3px 10px; border-radius: 3px; white-space: nowrap;
+  transition: background .2s ease, border-color .2s ease, color .2s ease;
 }
 .tag-accent { background: var(--color-accent-soft); color: var(--color-accent-ink); }
 .tag-neutral { background: var(--color-neutral-soft); color: var(--color-neutral-ink); }
@@ -116,8 +117,9 @@ a:hover { color: var(--color-accent); }
 .theme-toggle {
   background: none; border: 1px solid var(--color-divider); border-radius: 50%;
   width: 30px; height: 30px; cursor: pointer; color: var(--color-text); font-size: 15px;
+  transition: border-color .2s ease, color .2s ease, transform .2s ease;
 }
-.theme-toggle:hover { border-color: var(--color-accent); color: var(--color-accent); }
+.theme-toggle:hover { border-color: var(--color-accent); color: var(--color-accent); transform: rotate(18deg); }
 
 main { max-width: 1200px; margin: 0 auto; padding: 0 var(--gutter); }
 
@@ -152,10 +154,12 @@ main { max-width: 1200px; margin: 0 auto; padding: 0 var(--gutter); }
 .card {
   display: flex; flex-direction: column; gap: 16px; padding: 28px;
   border: 1px solid var(--color-divider); border-radius: var(--radius-md);
-  background: transparent; color: var(--color-text);
-  transition: border-color .25s, box-shadow .25s, transform .25s, opacity .3s;
+  background: transparent; color: var(--color-text); cursor: pointer;
+  transition: border-color .3s ease, box-shadow .3s ease, transform .3s cubic-bezier(.22,.61,.36,1), opacity .3s ease;
 }
-.card:hover { border-color: var(--color-accent); box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.card:hover { border-color: var(--color-accent); box-shadow: var(--shadow-md); transform: translateY(-3px); }
+.card:active { transform: translateY(-1px); transition-duration: .1s; }
+.card:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; border-color: var(--color-accent); }
 .card.is-hidden { display: none; }
 .card-top { display: flex; align-items: center; gap: 16px; }
 .avatar {
@@ -205,6 +209,7 @@ main { max-width: 1200px; margin: 0 auto; padding: 0 var(--gutter); }
   display: grid; grid-template-columns: minmax(0, 1fr) 100px 120px;
   gap: 24px; align-items: center; padding: 16px 4px;
   border-bottom: 1px solid var(--color-divider); font-size: 15px;
+  transition: background .2s ease;
 }
 .results .row:not(.head):hover { background: var(--color-accent-soft); }
 .results .head { padding: 12px 4px; border-bottom-color: var(--color-text); font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--color-muted); }
@@ -263,10 +268,15 @@ main { max-width: 1200px; margin: 0 auto; padding: 0 var(--gutter); }
 @keyframes rise { from { opacity: 0; transform: translateY(12px); } }
 
 /* Появление при прокрутке */
-.reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity .7s cubic-bezier(.22,.61,.36,1), transform .7s cubic-bezier(.22,.61,.36,1); will-change: opacity, transform; }
 .reveal.visible { opacity: 1; transform: none; }
+/* Лёгкий каскад появления внутри сеток */
+.team-grid .card:nth-child(2), .ach-grid .reveal:nth-child(2), .writeup-grid .reveal:nth-child(2) { transition-delay: .08s; }
+.team-grid .card:nth-child(3), .ach-grid .reveal:nth-child(3), .writeup-grid .reveal:nth-child(3) { transition-delay: .16s; }
+.team-grid .card:nth-child(4), .ach-grid .reveal:nth-child(4), .writeup-grid .reveal:nth-child(4) { transition-delay: .24s; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .reveal { opacity: 1; transform: none; transition: none; }
-  .card:hover { transform: none; }
+  .reveal { opacity: 1; transform: none; transition: none; transition-delay: 0s !important; }
+  .card:hover, .card:active { transform: none; }
+  .theme-toggle:hover { transform: none; }
 }
