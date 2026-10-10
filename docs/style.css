@@ -126,7 +126,9 @@ main { max-width: 1200px; margin: 0 auto; padding: 0 var(--gutter); }
 /* ---------- Hero ---------- */
 .hero { padding: clamp(64px, 10vw, 120px) 0 clamp(48px, 7vw, 84px); }
 .hero-title { font-size: clamp(64px, 12vw, 148px); line-height: .95; margin-left: -.04em; }
-.hero-lead { font-size: clamp(17px, 2vw, 20px); line-height: 1.6; max-width: 46ch; margin-top: 28px; }
+.hero-lead { max-width: 58ch; margin-top: 28px; display: grid; gap: 14px; }
+.hero-lead p { margin: 0; font-size: clamp(17px, 2vw, 20px); line-height: 1.65; text-wrap: balance; }
+.hero-lead p + p { font-size: clamp(15px, 1.7vw, 17px); color: var(--color-muted); }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
 
 /* ---------- Цифры ---------- */
