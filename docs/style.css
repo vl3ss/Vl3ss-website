@@ -239,7 +239,7 @@ main { max-width: 1200px; margin: 0 auto; padding: 0 var(--gutter); }
 
 /* ---------- Контакты, футер ---------- */
 .contact-lead { font-size: 17px; line-height: 1.6; max-width: 52ch; margin-top: -16px; }
-.footer {
+.footer { align-items: center;
   padding: 40px 0 56px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px;
   font-size: 14px; color: var(--color-muted);
 }
@@ -289,15 +289,14 @@ main { max-width: 1200px; margin: 0 auto; padding: 0 var(--gutter); }
   -webkit-mask: url("assets/logo.png") center / contain no-repeat;
           mask: url("assets/logo.png") center / contain no-repeat;
 }
-.logo-mark { -webkit-mask-image: url("assets/logo-mark.png"); mask-image: url("assets/logo-mark.png"); }
 .nav-brand { display: inline-flex; align-items: center; gap: 10px; }
 .nav-brand .logo-mark {
-  width: 26px; height: 26px; color: var(--color-accent-strong);
+  width: 22px; height: 42px; margin: -6px 0; color: var(--color-accent);
   transition: color .2s ease, transform .3s ease;
 }
-.nav-brand:hover .logo-mark { color: var(--color-accent); transform: translateY(-1px); }
-.footer-brand { display: inline-flex; align-items: center; gap: 8px; }
-.footer-brand .logo-mark { width: 18px; height: 18px; color: var(--color-accent); opacity: .85; }
+.nav-brand:hover .logo-mark { color: var(--color-accent-strong); transform: translateY(-1px); }
+.footer-brand { display: inline-flex; align-items: center; gap: 12px; }
+.footer-brand .logo-mark { width: 26px; height: 50px; color: var(--color-accent); }
 
 .hero { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 0 clamp(32px, 6vw, 88px); }
 .hero-body { grid-column: 1; grid-row: 1; min-width: 0; }
@@ -329,3 +328,4 @@ main { max-width: 1200px; margin: 0 auto; padding: 0 var(--gutter); }
   .hero-logo { animation: none; }
   .htb-link:hover, .htb-link:hover .htb-ico, .nav-brand:hover .logo-mark { transform: none; }
 }
+.nav-brand .logo-mark, .footer-brand .logo-mark { -webkit-mask-image: url("assets/logo-bold.png"); mask-image: url("assets/logo-bold.png"); }
