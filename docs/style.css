@@ -282,3 +282,50 @@ main { max-width: 1200px; margin: 0 auto; padding: 0 var(--gutter); }
   .card:hover, .card:active { transform: none; }
   .theme-toggle:hover { transform: none; }
 }
+
+/* ---------- Логотип ---------- */
+.logo-mark, .hero-logo {
+  display: inline-block; flex: none; background: currentColor;
+  -webkit-mask: url("assets/logo.png") center / contain no-repeat;
+          mask: url("assets/logo.png") center / contain no-repeat;
+}
+.logo-mark { -webkit-mask-image: url("assets/logo-mark.png"); mask-image: url("assets/logo-mark.png"); }
+.nav-brand { display: inline-flex; align-items: center; gap: 10px; }
+.nav-brand .logo-mark {
+  width: 26px; height: 26px; color: var(--color-accent-strong);
+  transition: color .2s ease, transform .3s ease;
+}
+.nav-brand:hover .logo-mark { color: var(--color-accent); transform: translateY(-1px); }
+.footer-brand { display: inline-flex; align-items: center; gap: 8px; }
+.footer-brand .logo-mark { width: 18px; height: 18px; color: var(--color-accent); opacity: .85; }
+
+.hero { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 0 clamp(32px, 6vw, 88px); }
+.hero-body { grid-column: 1; grid-row: 1; min-width: 0; }
+.hero-logo {
+  grid-column: 2; grid-row: 1; justify-self: end;
+  width: clamp(170px, 20vw, 250px); aspect-ratio: 179 / 343;
+  color: var(--color-accent);
+  filter: drop-shadow(0 10px 24px color-mix(in srgb, var(--color-accent) 22%, transparent));
+  animation: rise .9s cubic-bezier(.22,.61,.36,1) both .1s;
+}
+@media (max-width: 760px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero-logo { grid-row: auto; grid-column: 1; justify-self: start; width: 96px; margin-bottom: 28px; }
+  .hero-body { grid-row: auto; }
+}
+
+/* ---------- Hack The Box ---------- */
+.htb-link {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-family: var(--font-heading); font-weight: 600; font-size: 14px; line-height: 1;
+  color: var(--color-text); text-decoration: none;
+  padding: 6px 14px 6px 10px; border: 1px solid var(--color-divider); border-radius: 999px;
+  transition: border-color .2s, color .2s, transform .2s, box-shadow .2s;
+}
+.htb-link .htb-ico { width: 17px; height: 17px; color: var(--color-accent-strong); transition: transform .4s ease; }
+.htb-link:hover { color: var(--color-accent-strong); border-color: var(--color-accent); transform: translateY(-1px); box-shadow: var(--shadow-md); }
+.htb-link:hover .htb-ico { transform: rotate(60deg); }
+@media (prefers-reduced-motion: reduce) {
+  .hero-logo { animation: none; }
+  .htb-link:hover, .htb-link:hover .htb-ico, .nav-brand:hover .logo-mark { transform: none; }
+}

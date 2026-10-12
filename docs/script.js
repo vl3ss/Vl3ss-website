@@ -27,6 +27,7 @@ const MEMBERS = [
     github: 'https://github.com/vl3ss',
     tg: '@recently_was_good',
     resume: 'https://github.com/ustinovlev039-cpu',
+    htb: 'https://app.hackthebox.com/users/3068176',
   },
   {
     name: 'Velesova',
@@ -52,6 +53,7 @@ const MEMBERS = [
     github: 'https://github.com/vl3ss',
     tg: '@Svarozhuch',
     resume: 'https://github.com/Mara-hack',
+    htb: 'https://app.hackthebox.com/users/3118861',
   },
 ];
 
@@ -76,6 +78,9 @@ function esc(s) {
 }
 const tgUrl = (tg) => 'https://t.me/' + tg.replace(/^@/, '');
 const initials = (name) => name.replace(/[^A-Za-zА-Яа-я0-9]/g, '').slice(0, 2).toUpperCase() || '?';
+// Значок Hack The Box: куб внутри шестиугольника
+const HTB_ICON = `<svg class="htb-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5 20.5 7.25v9.5L12 21.5 3.5 16.75v-9.5z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M12 7.6 15.8 9.8v4.4L12 16.4 8.2 14.2V9.8zM8.2 9.8 12 12l3.8-2.2M12 12v4.4" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>`;
+const htbLink = (m) => m.htb ? `<a class="htb-link" href="${esc(m.htb)}" target="_blank" rel="noopener" aria-label="${esc('Профиль ' + m.name + ' на Hack The Box')}">${HTB_ICON}<span>Hack The Box</span></a>` : '';
 const list = (items) => `<ul class="card-list">${items.map((i) => `<li>${esc(i)}</li>`).join('')}</ul>`;
 
 // ---------- Цифры ----------
@@ -114,6 +119,7 @@ function renderTeam() {
       ${(m.certs && m.certs.length) ? `<div class="card-block"><h4>Сертификаты</h4>${list(m.certs)}</div>` : ''}
       <div class="card-foot">
         ${m.resume ? `<a class="resume-link" href="${esc(m.resume)}" target="_blank" rel="noopener"><span class="resume-ico" aria-hidden="true">❖</span> Резюме на GitHub</a>` : ''}
+        ${htbLink(m)}
         <a href="${esc(m.github)}" target="_blank" rel="noopener">GitHub</a>
         <a href="${esc(tgUrl(m.tg))}" target="_blank" rel="noopener">${esc(m.tg)}</a>
       </div>
@@ -147,6 +153,7 @@ function openMember(i) {
     </section>` : ''}
     <section class="card-foot" style="margin-top:0">
       ${m.resume ? `<a class="resume-link" href="${esc(m.resume)}" target="_blank" rel="noopener"><span class="resume-ico" aria-hidden="true">❖</span> Резюме на GitHub</a>` : ''}
+        ${htbLink(m)}
       <a href="${esc(m.github)}" target="_blank" rel="noopener">GitHub</a>
       <a href="${esc(tgUrl(m.tg))}" target="_blank" rel="noopener">${esc(m.tg)}</a>
     </section>`;
