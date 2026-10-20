@@ -85,6 +85,7 @@ const RESULTS = [
   { name: 'Kaspersky CTF', year: 2026, place: 62, teams: 350 },
   { name: 'AvitoCTF', year: 2026, place: 79, teams: 350 },
   { name: 'Кубок Федерации', year: 2026, place: 112, teams: 350 },
+  { name: 'SolarCTF', year: 2026, place: 151, teams: 900 },
 ];
 
 // Райтапы: пока пусто — добавим позже самые крупные и сложные таски
