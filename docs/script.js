@@ -55,6 +55,29 @@ const MEMBERS = [
     resume: 'https://github.com/Mara-hack',
     htb: 'https://app.hackthebox.com/users/3118861',
   },
+  {
+    name: 'Napulitanka',
+    role: 'Пентестер · Web · Infra · OSINT',
+    skills: ['web', 'infra', 'osint'],
+    bio: 'Участник Vl3ss. Около 2 лет в ИБ, развиваюсь в направлении web/infra pentest и OSINT; цель — работа в команде. Основные площадки для практики — TryHackMe, PortSwigger Web Security Academy и Medium. Рабочая система — Linux.',
+    did: [
+      'Создал образовательную комнату на TryHackMe по инструменту Nuclei',
+      'Решил 450+ комнат на TryHackMe',
+      'Практика по OWASP Top 10, privilege escalation, HTTP Request Smuggling',
+      'Инструменты: Burp Suite, nmap, rustscan, ffuf, feroxbuster, gobuster, Nuclei, Metasploit, Acunetix, John, amass, Maltego',
+    ],
+    events: ['aclabs.pro 2025/2026', 'Кубок Федерации 2026', 'SolarCTF'],
+    certs: [],
+    history: [
+      { year: '2026', text: 'Участник Vl3ss; Кубок Федерации, SolarCTF, aclabs.pro' },
+      { year: '2025', text: 'aclabs.pro; углублённая практика web/infra pentest и OSINT на TryHackMe и PortSwigger' },
+      { year: '2024', text: 'Старт в ИБ' },
+    ],
+    github: 'https://github.com/FrogLouis',
+    tg: '@verberpromeret',
+    thm: 'https://tryhackme.com/p/napulitanka',
+    htb: 'https://profile.hackthebox.com/profile/01a07cb6-76b2-7331-be88-c03bdf53f2bb',
+  },
 ];
 
 // Результаты соревнований
@@ -81,6 +104,9 @@ const initials = (name) => name.replace(/[^A-Za-zА-Яа-я0-9]/g, '').slice(0, 
 // Значок HackTheBox: куб внутри шестиугольника
 const HTB_ICON = `<svg class="htb-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5 20.5 7.25v9.5L12 21.5 3.5 16.75v-9.5z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M12 7.6 15.8 9.8v4.4L12 16.4 8.2 14.2V9.8zM8.2 9.8 12 12l3.8-2.2M12 12v4.4" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>`;
 const htbLink = (m) => m.htb ? `<a class="htb-link" href="${esc(m.htb)}" target="_blank" rel="noopener" aria-label="${esc('Профиль ' + m.name + ' на HackTheBox')}">${HTB_ICON}<span>HackTheBox</span></a>` : '';
+// Значок TryHackMe: щит с терминальным приглашением
+const THM_ICON = `<svg class="htb-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5 19 5v5.5c0 4.4-3 7.6-7 9-4-1.4-7-4.6-7-9V5z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="m8.6 10.4 2.2 2-2.2 2M12.6 15.4h3.2" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+const thmLink = (m) => m.thm ? `<a class="htb-link" href="${esc(m.thm)}" target="_blank" rel="noopener" aria-label="${esc('Профиль ' + m.name + ' на TryHackMe')}">${THM_ICON}<span>TryHackMe</span></a>` : '';
 const list = (items) => `<ul class="card-list">${items.map((i) => `<li>${esc(i)}</li>`).join('')}</ul>`;
 
 // ---------- Цифры ----------
@@ -120,6 +146,7 @@ function renderTeam() {
       <div class="card-foot">
         ${m.resume ? `<a class="resume-link" href="${esc(m.resume)}" target="_blank" rel="noopener"><span class="resume-ico" aria-hidden="true">❖</span> Резюме на GitHub</a>` : ''}
         ${htbLink(m)}
+        ${thmLink(m)}
         <a href="${esc(m.github)}" target="_blank" rel="noopener">GitHub</a>
         <a href="${esc(tgUrl(m.tg))}" target="_blank" rel="noopener">${esc(m.tg)}</a>
       </div>
@@ -154,6 +181,7 @@ function openMember(i) {
     <section class="card-foot" style="margin-top:0">
       ${m.resume ? `<a class="resume-link" href="${esc(m.resume)}" target="_blank" rel="noopener"><span class="resume-ico" aria-hidden="true">❖</span> Резюме на GitHub</a>` : ''}
         ${htbLink(m)}
+        ${thmLink(m)}
       <a href="${esc(m.github)}" target="_blank" rel="noopener">GitHub</a>
       <a href="${esc(tgUrl(m.tg))}" target="_blank" rel="noopener">${esc(m.tg)}</a>
     </section>`;
