@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Геолокация фотографии — SolarCTF · Vl3ss</title>
+  <meta name="description" content="OSINT-райтап SolarCTF: как найти микрорайон Таёжный в Тынде по одной фотографии.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="icon" href="../assets/favicon.ico" sizes="any">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="writeup.css">
+</head>
+<body>
+<nav class="nav article-nav">
+  <a class="nav-brand" href="../index.html"><span class="logo-mark" aria-hidden="true"></span>Vl3ss</a>
+  <div class="nav-links"><a href="../index.html#writeups">Все райтапы</a><button class="theme-toggle" id="themeToggle" type="button" aria-label="Сменить тему">◐</button></div>
+</nav>
+<main class="article-main">
+  <header class="article-hero">
+    <div class="article-meta"><span class="tag tag-accent">OSINT</span><span>SolarCTF</span><span aria-hidden="true">·</span><span>Геолокация</span></div>
+    <h1>Найти Тынду по одному кадру</h1>
+    <p class="article-lead">Один снимок, несколько ориентиров и проверка по панораме. Разбираем, как от осеннего пейзажа выйти к конкретной точке в микрорайоне Таёжный.</p>
+    <div class="article-actions"><a class="btn btn-primary" href="../assets/writeups/osint-tynda.pdf" target="_blank" rel="noopener">Открыть полный PDF ↗</a><a class="btn btn-ghost" href="../index.html#writeups">← К райтапам</a></div>
+  </header>
+  <figure class="article-cover"><img src="../assets/writeups/osint-panorama.jpg" alt="Панорама микрорайона Таёжный с отмеченными ориентирами"><figcaption>Найденная панорама: постоянные ориентиры совпали с исходным кадром.</figcaption></figure>
+  <article class="article-body">
+    <h2>Задача</h2>
+    <p>Нужно определить место съёмки по фотографии. Из условия известна только страна — Россия. На кадре видны посёлок на склоне, бетонная дорога, красно-белая сотовая вышка, трёхэтажный дом и осенний лес.</p>
+    <figure class="article-figure"><img src="../assets/writeups/osint-original.jpg" alt="Исходная фотография с пометками: вышка, дом, контейнер и лиственницы" loading="lazy"><figcaption>Исходный кадр с отмеченными ориентирами.</figcaption></figure>
+    <div class="article-note"><p>Значок MTS на экране телефона показывает SIM-карту владельца, а не оператора вышки в кадре. Этот признак не использовался как доказательство места.</p></div>
+
+    <h2>Ход решения</h2>
+    <h3>01. Сузили регион по ландшафту</h3>
+    <p>Жёлтая хвоя лиственниц и невысокие таёжные сопки указывали на восточную часть России. Тип трёхэтажной застройки напоминал дома, которые возводили в городах и посёлках БАМа.</p>
+    <h3>02. Зацепились за редкую деталь</h3>
+    <p>У одного дома заметны закопчённые окна. Публикации о пожарах помогли найти похожую застройку в Тынде, микрорайоне Таёжный. Новость дала направление поиска, но дом из неё не принимался за тот же дом на снимке.</p>
+    <h3>03. Проверили по панораме</h3>
+    <p>На панораме Яндекса 2024 года совпали взаимное положение вышки и здания с красной крышей, трёхэтажный дом справа, красный контейнер, дорога из плит и опоры освещения. Сезон на снимках разный, поэтому сверялись постоянные объекты.</p>
+    <figure class="article-figure"><img src="../assets/writeups/osint-comparison.jpg" alt="Сравнение вышки и соседнего здания на исходном фото и панораме" loading="lazy"><figcaption>Прямое сравнение вышки и соседнего здания.</figcaption></figure>
+
+    <div class="article-result"><span class="eyebrow">Ответ</span><strong>Тында · микрорайон Таёжный</strong><p>55.162291, 124.772678</p></div>
+    <p class="article-end">Полная цепочка поиска, таблица совпадений и список источников доступны в <a href="../assets/writeups/osint-tynda.pdf" target="_blank" rel="noopener">оригинальном райтапе PDF</a>.</p>
+  </article>
+  <hr class="hr">
+  <footer class="footer"><span class="footer-brand"><span class="logo-mark" aria-hidden="true"></span><span>Vl3ss · CTF-команда · <span id="year"></span></span></span><a href="../index.html#writeups">Все райтапы ↑</a></footer>
+</main>
+<script src="writeup.js"></script>
+</body>
+</html>

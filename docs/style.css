@@ -233,34 +233,43 @@ main { max-width: 1200px; margin: 0 auto; padding: 0 var(--gutter); }
 .ach-item p + p { font-size: 14px; color: var(--color-muted); margin-top: 4px; }
 
 /* ---------- Райтапы ---------- */
-.writeup-grid { display: grid; gap: 24px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); }
+.writeups-intro { max-width: 62ch; margin: -18px 0 28px; color: var(--color-muted); font-size: 16px; }
+.writeup-grid { display: grid; gap: 24px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.writeups-repo { margin-top: 20px; font-size: 14px; }
 .youtube-card {
   display: flex; align-items: center; gap: 20px;
-  width: 100%; margin-bottom: 28px; padding: 22px 26px;
-  border: 1px solid var(--color-accent); border-radius: var(--radius-lg);
-  background: var(--color-accent-soft); color: var(--color-text); text-decoration: none;
+  width: 100%; margin-top: 28px; padding: 24px 28px;
+  border: 1px solid var(--color-divider); border-radius: var(--radius-lg);
+  background: #24221f; color: #f3f2f2; text-decoration: none;
 }
-.youtube-card:hover { color: var(--color-text); box-shadow: var(--shadow-md); }
+.youtube-card:hover { color: #f3f2f2; box-shadow: var(--shadow-lg); }
 .youtube-icon {
-  flex: none; display: grid; place-items: center; width: 52px; height: 52px;
-  border-radius: 50%; background: var(--color-accent); color: var(--color-bg); font-size: 20px;
+  flex: none; display: grid; place-items: center; width: 54px; height: 38px;
+  border-radius: 11px; background: #e34840; color: #fff; font-size: 17px;
 }
 .youtube-copy { display: grid; gap: 4px; }
-.youtube-copy strong { font-family: var(--font-heading); font-size: 26px; line-height: 1.1; font-weight: 600; }
-.youtube-copy span { color: var(--color-muted); font-size: 14px; }
-.youtube-arrow { margin-left: auto; color: var(--color-accent-strong); font-size: 26px; }
+.youtube-copy strong { font-family: var(--font-heading); font-size: 29px; line-height: 1.1; font-weight: 600; }
+.youtube-copy span { color: #c8c5c0; font-size: 13px; }
+.youtube-copy .youtube-kicker { color: #e7bd7e; font-size: 11px; text-transform: uppercase; letter-spacing: .1em; }
+.youtube-arrow { margin-left: auto; color: #e7bd7e; font-size: 28px; }
+.writeup { display: block; padding: 0; overflow: hidden; text-decoration: none; }
+.writeup-image { height: 190px; overflow: hidden; background: var(--color-surface); border-bottom: 1px solid var(--color-divider); }
+.writeup-image img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .4s ease; }
+.writeup:hover .writeup-image img { transform: scale(1.04); }
+.writeup-content { display: flex; flex-direction: column; gap: 13px; min-height: 250px; padding: 22px 24px 24px; }
+.writeup:hover { color: var(--color-text); }
+.writeup-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: 13px; color: var(--color-muted); }
+.writeup h3 { font-size: 27px; line-height: 1.06; }
+.writeup p { font-size: 14px; line-height: 1.55; color: var(--color-muted); flex: 1; }
+.writeup .read { color: var(--color-accent-strong); font-size: 14px; font-weight: 600; }
+@media (max-width: 900px) { .writeup-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) { .writeup-grid { grid-template-columns: 1fr; } .writeup-image { height: 220px; } }
 @media (max-width: 480px) {
   .youtube-card { gap: 12px; padding: 18px; }
-  .youtube-icon { width: 40px; height: 40px; font-size: 16px; }
+  .youtube-icon { width: 42px; height: 32px; font-size: 14px; }
   .youtube-copy strong { font-size: 22px; }
   .youtube-arrow { display: none; }
 }
-.writeup { gap: 12px; padding: 24px; text-decoration: none; }
-.writeup:hover { color: var(--color-text); }
-.writeup-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: 13px; color: var(--color-muted); }
-.writeup h3 { font-size: 24px; margin-top: 4px; }
-.writeup p { font-size: 14px; line-height: 1.6; color: var(--color-muted); flex: 1; }
-.writeup .read { color: var(--color-accent-strong); font-size: 15px; }
 
 /* ---------- Контакты, футер ---------- */
 .contact-lead { font-size: 17px; line-height: 1.6; max-width: 52ch; margin-top: -16px; }

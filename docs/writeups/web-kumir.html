@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>КуМир за стеной — SolarCTF · Vl3ss</title>
+  <meta name="description" content="Web-райтап SolarCTF: SSRF через загрузку аватара и доступ к внутреннему Docker-сервису.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="icon" href="../assets/favicon.ico" sizes="any">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="writeup.css">
+</head>
+<body>
+<nav class="nav article-nav">
+  <a class="nav-brand" href="../index.html"><span class="logo-mark" aria-hidden="true"></span>Vl3ss</a>
+  <div class="nav-links"><a href="../index.html#writeups">Все райтапы</a><button class="theme-toggle" id="themeToggle" type="button" aria-label="Сменить тему">◐</button></div>
+</nav>
+<main class="article-main">
+  <header class="article-hero">
+    <div class="article-meta"><span class="tag tag-accent">Web</span><span>SolarCTF</span><span aria-hidden="true">·</span><span>SSRF · 100 баллов</span></div>
+    <h1>КуМир за стеной</h1>
+    <p class="article-lead">Форма загрузки аватара по URL стала входом во внутреннюю Docker-сеть. Проверка скрытого сервиса вернула флаг прямо в диагностическом ответе.</p>
+    <div class="article-actions"><a class="btn btn-primary" href="../assets/writeups/web-kumir.pdf" target="_blank" rel="noopener">Открыть полный PDF ↗</a><a class="btn btn-ghost" href="../index.html#writeups">← К райтапам</a></div>
+  </header>
+  <figure class="article-cover"><img src="../assets/writeups/web-task.png" alt="Скриншот задания «КуМир за стеной»"><figcaption>Исходное задание SolarCTF.</figcaption></figure>
+  <article class="article-body">
+    <h2>С чего начали</h2>
+    <p>В <code>docker-compose.yml</code> веб-приложение подключено к сетям <code>edge</code> и <code>govnonet</code>, а сервис <code>kumir-checker</code> — только к внутренней <code>govnonet</code>. Значит, веб-приложение может обращаться к сервису, который не опубликован наружу.</p>
+    <figure class="article-figure"><img src="../assets/writeups/web-site.png" alt="Скриншот сайта из задания" loading="lazy"><figcaption>Веб-приложение задачи.</figcaption></figure>
+
+    <h2>Ход решения</h2>
+    <h3>01. Нашли точку для SSRF</h3>
+    <p>В личном кабинете аватар устанавливался по URL. Если сервер сам загружает изображение и не ограничивает адрес назначения, такую функцию можно использовать для запроса к внутреннему сервису.</p>
+    <h3>02. Получили подсказку от checker</h3>
+    <p>Запрос к <code>http://kumir-checker:8081/robot-final</code> подтвердил доступ к внутреннему сервису. Диагностический ответ подсказал endpoint <code>/teacher/check</code> и нужные параметры. В обсуждении задания также нашлась подсказка о движении робота вправо.</p>
+    <figure class="article-figure"><img src="../assets/writeups/web-hint.png" alt="Скриншот обсуждения с подсказкой к задаче" loading="lazy"><figcaption>Подсказка из обсуждения задания.</figcaption></figure>
+    <h3>03. Прочитали ответ проверки</h3>
+    <p>Через ту же точку входа обратились к <code>/teacher/check?task=robot-final&amp;answer=вправо</code>. Проверка вернула <code>verdict: WA</code>, но в поле <code>expected</code> оказался флаг. Успешно пройти проверку для его получения не потребовалось.</p>
+
+    <div class="article-result"><span class="eyebrow">Флаг</span><strong>SOLARCTF{n3_s0tv0ri_s3b3_kumir4}</strong></div>
+    <p class="article-end">Полные запросы, ответы и рекомендации по защите приведены в <a href="../assets/writeups/web-kumir.pdf" target="_blank" rel="noopener">оригинальном райтапе PDF</a>.</p>
+  </article>
+  <hr class="hr">
+  <footer class="footer"><span class="footer-brand"><span class="logo-mark" aria-hidden="true"></span><span>Vl3ss · CTF-команда · <span id="year"></span></span></span><a href="../index.html#writeups">Все райтапы ↑</a></footer>
+</main>
+<script src="writeup.js"></script>
+</body>
+</html>

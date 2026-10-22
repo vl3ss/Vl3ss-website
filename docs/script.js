@@ -89,8 +89,29 @@ const RESULTS = [
   { name: 'SolarCTF', year: 2026, place: 151, teams: 900 },
 ];
 
-// Райтапы: пока пусто — добавим позже самые крупные и сложные таски
-const WRITEUPS = [];
+const WRITEUPS = [
+  {
+    cat: 'OSINT', ctf: 'SolarCTF', title: 'Геолокация: найти Тынду по одному кадру',
+    summary: 'Лиственницы, красная вышка и следы пожара помогли выйти на микрорайон Таёжный. Финальная проверка — по панораме.',
+    image: 'assets/writeups/osint-panorama.jpg',
+    alt: 'Панорама микрорайона Таёжный с отмеченными ориентирами',
+    href: 'writeups/osint-tynda.html',
+  },
+  {
+    cat: 'Forensics', ctf: 'SolarCTF', title: 'Всё легче, чем кажется',
+    summary: 'Из UAC-артефактов нашли процесс, замаскированный под sshd, и разобрали защиту Rust-бинаря.',
+    image: 'assets/writeups/forensics-terminal.png',
+    alt: 'Терминал с анализом артефактов Linux',
+    href: 'writeups/forensics-malware.html',
+  },
+  {
+    cat: 'Web', ctf: 'SolarCTF', title: 'КуМир за стеной',
+    summary: 'Загрузка аватара по URL открыла путь к внутреннему Docker-сервису. Диагностика и ответ проверки раскрыли флаг.',
+    image: 'assets/writeups/web-task.png',
+    alt: 'Скриншот задания «КуМир за стеной»',
+    href: 'writeups/web-kumir.html',
+  },
+];
 
 // За пределами таблицы: пока пусто — заполним позже
 const ACHIEVEMENTS = [];
@@ -239,10 +260,13 @@ function renderResults() {
 function renderWriteups() {
   $('#writeupGrid').innerHTML = WRITEUPS.map((w) => `
     <a class="card writeup reveal" href="${esc(w.href)}">
-      <div class="writeup-top"><span class="tag tag-accent">${esc(w.cat)}</span><span>${esc(w.ctf)}</span></div>
-      <h3>${esc(w.title)}</h3>
-      <p>${esc(w.summary)}</p>
-      <span class="read">Читать →</span>
+      <div class="writeup-image"><img src="${esc(w.image)}" alt="${esc(w.alt)}" loading="lazy"></div>
+      <div class="writeup-content">
+        <div class="writeup-top"><span class="tag tag-accent">${esc(w.cat)}</span><span>${esc(w.ctf)}</span></div>
+        <h3>${esc(w.title)}</h3>
+        <p>${esc(w.summary)}</p>
+        <span class="read">Читать разбор <span aria-hidden="true">↗</span></span>
+      </div>
     </a>`).join('');
 }
 
