@@ -31,6 +31,7 @@ const MEMBERS = [
   },
   {
     name: 'Velesova',
+    captain: true,
     role: 'Капитан · Web · OSINT · Infra',
     skills: ['web', 'osint', 'infra'],
     bio: 'Капитан Vl3ss. Организую работу команды, формирую стек исследований и отвечаю за развитие направлений Web Security, Infrastructure и OSINT. Фокусируюсь на практическом анализе защищённости, сборке кастомных Linux-систем и исследовании векторов атак.',
@@ -131,15 +132,14 @@ function renderStats() {
 // ---------- Участники ----------
 function renderTeam() {
   $('#teamGrid').innerHTML = MEMBERS.map((m, i) => `
-    <article class="card reveal" data-member="${i}" data-skills="${esc(m.skills.join(' '))}" tabindex="0" role="button" aria-label="${esc('Открыть профиль: ' + m.name)}">
+    <article class="card reveal" data-member="${i}" tabindex="0" role="button" aria-label="${esc('Открыть профиль: ' + m.name)}">
       <div class="card-top">
         <div class="avatar" aria-hidden="true">${esc(initials(m.name))}</div>
         <div>
-          <span class="card-kicker">${esc(m.role)}</span>
+          ${m.captain ? '<span class="card-kicker">Капитан</span>' : ''}
           <h3 class="card-title">${esc(m.name)}</h3>
         </div>
       </div>
-      ${m.skills.length ? `<div class="tags">${m.skills.map((s) => `<span class="tag tag-outline">${esc(s)}</span>`).join('')}</div>` : ''}
       ${m.bio ? `<p class="card-bio">${esc(m.bio)}</p>` : ''}
       ${m.did.length ? `<div class="card-block"><h4>Что сделал</h4>${list(m.did)}</div>` : ''}
       ${m.events.length ? `<div class="card-block"><h4>Где участвовал</h4><div class="tags">${m.events.map((e) => `<span class="tag tag-neutral">${esc(e)}</span>`).join('')}</div></div>` : ''}
@@ -165,7 +165,7 @@ function openMember(i) {
       <div class="card-top">
         <div class="avatar" aria-hidden="true">${esc(initials(m.name))}</div>
         <div>
-          <span class="card-kicker">${esc(m.role)}</span>
+          ${m.captain ? '<span class="card-kicker">Капитан</span>' : ''}
           <h3 class="card-title" id="dialogTitle">${esc(m.name)}</h3>
         </div>
       </div>
