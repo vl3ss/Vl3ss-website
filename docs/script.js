@@ -62,13 +62,17 @@ const MEMBERS = [
     skills: ['web', 'infra', 'osint'],
     bio: 'Участник Vl3ss. Около 2 лет в ИБ, развиваюсь в направлении web/infra pentest и OSINT; цель — работа в команде. Основные площадки для практики — TryHackMe, PortSwigger Web Security Academy и Medium. Рабочая система — Linux.',
     did: [
-      'Создал образовательную комнату на TryHackMe по инструменту Nuclei',
+      'Создал обучающую комнату по инструменту Nuclei на TryHackMe',
       'Решил 450+ комнат на TryHackMe',
       'Практика по OWASP Top 10, privilege escalation, HTTP Request Smuggling',
       'Инструменты: Burp Suite, nmap, rustscan, ffuf, feroxbuster, gobuster, Nuclei, Metasploit, Acunetix, John, amass, Maltego',
     ],
     events: ['aclabs.pro 2025/2026', 'Кубок Федерации 2026', 'SolarCTF'],
-    certs: [],
+    certs: [
+      'TryHackMe: Web Application Pentesting',
+      'TryHackMe: Jr Penetration Tester',
+      'TryHackMe: Cyber Security 101',
+    ],
     history: [
       { year: '2026', text: 'Участник Vl3ss; Кубок Федерации, SolarCTF, aclabs.pro' },
       { year: '2025', text: 'aclabs.pro; углублённая практика web/infra pentest и OSINT на TryHackMe и PortSwigger' },
@@ -86,7 +90,7 @@ const RESULTS = [
   { name: 'Kaspersky CTF', year: 2026, place: 62, teams: 350 },
   { name: 'AvitoCTF', year: 2026, place: 79, teams: 350 },
   { name: 'Кубок Федерации', year: 2026, place: 112, teams: 350 },
-  { name: 'SolarCTF', year: 2026, place: 151, teams: 900 },
+  { name: 'SolarCTF', year: 2026, place: 139, teams: 900 },
 ];
 
 const WRITEUPS = [
