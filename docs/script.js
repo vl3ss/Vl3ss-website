@@ -126,7 +126,7 @@ const ACHIEVEMENTS = [
   },
   {
     kind: 'CTF', year: '2026', title: 'HoneyBadger CTF AvitoTech',
-    detail: '101 место в Honey League · команда «Диванные чародеи»',
+    detail: '79 место в Honey League · команда C4S1NO',
     image: 'assets/achievements/avito-2026.webp',
     pdf: 'assets/achievements/avito-2026.pdf',
   },
