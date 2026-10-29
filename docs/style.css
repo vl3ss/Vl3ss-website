@@ -226,11 +226,26 @@ main { max-width: 1200px; margin: 0 auto; padding: 0 var(--gutter); }
 .results .empty { padding: 28px 0; color: var(--color-muted); font-style: italic; }
 
 /* ---------- Достижения ---------- */
-.ach-grid { display: grid; gap: 0 40px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); margin-top: -16px; }
-.ach-col { padding: 24px 0; border-top: 1px solid var(--color-divider); }
-.ach-item { margin-top: 18px; }
-.ach-item p:first-child { font-family: var(--font-heading); font-size: 21px; line-height: 1.25; }
-.ach-item p + p { font-size: 14px; color: var(--color-muted); margin-top: 4px; }
+.ach-intro { max-width: 60ch; margin: -18px 0 28px; color: var(--color-muted); font-size: 16px; }
+.ach-grid { display: grid; gap: 24px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.ach-card {
+  display: flex; flex-direction: column; overflow: hidden;
+  border: 1px solid var(--color-divider); border-radius: var(--radius-md);
+  color: var(--color-text); text-decoration: none;
+  transition: border-color .3s, box-shadow .3s, transform .3s cubic-bezier(.22,.61,.36,1);
+}
+.ach-card:hover { color: var(--color-text); border-color: var(--color-accent); box-shadow: var(--shadow-md); transform: translateY(-3px); }
+.ach-card:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; }
+.ach-preview { display: grid; place-items: center; height: 230px; padding: 14px; border-bottom: 1px solid var(--color-divider); background: var(--color-surface); }
+.ach-preview img { display: block; width: auto; height: auto; max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 2px; box-shadow: 0 3px 12px color-mix(in srgb, #000 14%, transparent); }
+.ach-content { display: flex; flex: 1; flex-direction: column; gap: 12px; padding: 22px 24px 24px; }
+.ach-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; color: var(--color-muted); font-size: 13px; }
+.ach-content h3 { font-size: 27px; line-height: 1.08; }
+.ach-detail { color: var(--color-muted); font-size: 14px; line-height: 1.55; }
+.ach-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 16px; margin-top: auto; padding-top: 14px; border-top: 1px solid var(--color-divider); font-size: 13px; }
+.ach-open { color: var(--color-accent-strong); font-weight: 600; white-space: nowrap; }
+@media (max-width: 900px) { .ach-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) { .ach-grid { grid-template-columns: 1fr; } }
 
 /* ---------- Райтапы ---------- */
 .writeups-intro { max-width: 62ch; margin: -18px 0 28px; color: var(--color-muted); font-size: 16px; }
@@ -313,7 +328,7 @@ main { max-width: 1200px; margin: 0 auto; padding: 0 var(--gutter); }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .reveal { opacity: 1; transform: none; transition: none; transition-delay: 0s !important; }
-  .card:hover, .card:active { transform: none; }
+  .card:hover, .card:active, .ach-card:hover { transform: none; }
   .theme-toggle:hover { transform: none; }
 }
 

@@ -117,8 +117,44 @@ const WRITEUPS = [
   },
 ];
 
-// За пределами таблицы: пока пусто — заполним позже
-const ACHIEVEMENTS = [];
+const ACHIEVEMENTS = [
+  {
+    kind: 'CTF', year: '2026', title: 'SolarCTF',
+    detail: 'Сертификат участия · команда Vl3ss',
+    image: 'assets/achievements/solarctf-2026.webp',
+    pdf: 'assets/achievements/solarctf-2026.pdf',
+  },
+  {
+    kind: 'CTF', year: '2026', title: 'HoneyBadger CTF AvitoTech',
+    detail: '101 место в Honey League · команда «Диванные чародеи»',
+    image: 'assets/achievements/avito-2026.webp',
+    pdf: 'assets/achievements/avito-2026.pdf',
+  },
+  {
+    kind: 'CTF', year: '2026', title: 'Cyber Apocalypse CTF',
+    detail: '732 место из 6744 команд · 38 задач · Fortitudo',
+    image: 'assets/achievements/htb-2026.webp',
+    pdf: 'assets/achievements/htb-2026.pdf',
+  },
+  {
+    kind: 'Стажировка', year: '2026', title: 'Positive Technologies',
+    detail: 'Теория и практические задания по кибербезопасности',
+    image: 'assets/achievements/positive-technologies.webp',
+    pdf: 'assets/achievements/positive-technologies.pdf',
+  },
+  {
+    kind: 'Обучение', year: '2026', title: 'Контейнеризация с Docker',
+    detail: 'Yandex Cloud Training & Certification',
+    image: 'assets/achievements/yandex-docker.webp',
+    pdf: 'assets/achievements/yandex-docker.pdf',
+  },
+  {
+    kind: 'Благодарность', year: '2026', title: 'Конференция «Код ИБ»',
+    detail: 'За помощь в подготовке и проведении конференции',
+    image: 'assets/achievements/kod-ib.webp',
+    pdf: 'assets/achievements/kod-ib.pdf',
+  },
+];
 
 const fmtNum = (n) => n.toLocaleString('ru-RU');
 const $ = (sel) => document.querySelector(sel);
@@ -277,10 +313,15 @@ function renderWriteups() {
 // ---------- Достижения ----------
 function renderAchievements() {
   $('#achGrid').innerHTML = ACHIEVEMENTS.map((g) => `
-    <div class="ach-col reveal">
-      <span class="eyebrow" style="margin:0">${esc(g.kind)}</span>
-      ${g.items.map((it) => `<div class="ach-item"><p>${esc(it.title)}</p><p>${esc(it.meta)}</p></div>`).join('')}
-    </div>`).join('');
+    <a class="ach-card reveal" href="${esc(g.pdf)}" target="_blank" rel="noopener">
+      <div class="ach-preview"><img src="${esc(g.image)}" alt="" loading="lazy"></div>
+      <div class="ach-content">
+        <div class="ach-top"><span class="tag tag-accent">${esc(g.kind)}</span><span>${esc(g.year)}</span></div>
+        <h3>${esc(g.title)}</h3>
+        <p class="ach-detail">${esc(g.detail)}</p>
+        <div class="ach-bottom"><span class="ach-open">Смотреть PDF ↗</span></div>
+      </div>
+    </a>`).join('');
 }
 
 function renderFooter() {
