@@ -125,7 +125,7 @@ const ACHIEVEMENTS = [
     pdf: 'assets/achievements/solarctf-2026.pdf',
   },
   {
-    kind: 'CTF', year: '2026', title: 'HoneyBadger CTF AvitoTech',
+    kind: 'CTF', year: '2026', title: 'AvitoTech CTF',
     detail: '79 место в Honey League · команда C4S1NO',
     image: 'assets/achievements/avito-2026.webp',
     pdf: 'assets/achievements/avito-2026.pdf',
