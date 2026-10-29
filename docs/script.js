@@ -143,8 +143,8 @@ const ACHIEVEMENTS = [
     pdf: 'assets/achievements/positive-technologies.pdf',
   },
   {
-    kind: 'Обучение', year: '2026', title: 'Yandex Cloud',
-    detail: 'Курс «Контейнеризация с Docker»',
+    kind: 'Обучение', year: '2026', title: 'Контейнеризация с Docker',
+    detail: 'Сертификат о прохождении курса',
     image: 'assets/achievements/yandex-docker.webp',
     pdf: 'assets/achievements/yandex-docker.pdf',
   },
@@ -314,9 +314,9 @@ function renderWriteups() {
 function renderAchievements() {
   $('#achGrid').innerHTML = ACHIEVEMENTS.map((g) => `
     <a class="ach-card reveal" href="${esc(g.pdf)}" target="_blank" rel="noopener">
+      <div class="ach-top"><span class="ach-kind">${esc(g.kind)}</span><span>${esc(g.year)}</span></div>
       <div class="ach-preview"><img src="${esc(g.image)}" alt="" loading="lazy"></div>
       <div class="ach-content">
-        <div class="ach-top"><span class="ach-kind">${esc(g.kind)}</span><span>${esc(g.year)}</span></div>
         <h3>${esc(g.title)}</h3>
         <p class="ach-detail">${esc(g.detail)}</p>
         <div class="ach-bottom"><span class="ach-open">Смотреть PDF ↗</span></div>
