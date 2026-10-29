@@ -236,18 +236,19 @@ main { max-width: 1200px; margin: 0 auto; padding: 0 var(--gutter); }
 }
 .ach-card:hover { color: var(--color-text); border-color: var(--color-accent); box-shadow: var(--shadow-md); transform: translateY(-3px); }
 .ach-card:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; }
-.ach-preview { display: grid; place-items: center; height: 230px; padding: 14px; border-bottom: 1px solid var(--color-divider); background: var(--color-surface); }
-.ach-preview img { display: block; width: auto; height: auto; max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 2px; box-shadow: 0 3px 12px color-mix(in srgb, #000 14%, transparent); }
-.ach-content { display: flex; flex: 1; flex-direction: column; gap: 12px; padding: 22px 24px 24px; }
-.ach-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; color: var(--color-muted); font-size: 13px; }
-.ach-content h3 { min-height: 2.3em; font-size: 24px; line-height: 1.15; overflow-wrap: anywhere; }
-.ach-detail { min-height: 4.65em; color: var(--color-muted); font-size: 14px; line-height: 1.55; }
-.ach-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 16px; margin-top: auto; padding-top: 14px; border-top: 1px solid var(--color-divider); font-size: 13px; }
+.ach-preview { height: 205px; overflow: hidden; border-bottom: 1px solid var(--color-divider); background: var(--color-surface); }
+.ach-preview img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+.ach-content { display: grid; flex: 1; grid-template-rows: 20px minmax(58px, auto) minmax(66px, auto) auto; gap: 12px; padding: 22px 24px 24px; }
+.ach-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; color: var(--color-muted); font-size: 12px; }
+.ach-kind { color: var(--color-accent-strong); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; }
+.ach-content h3 { font-size: 26px; line-height: 1.12; overflow-wrap: anywhere; }
+.ach-detail { color: var(--color-muted); font-size: 14px; line-height: 1.55; }
+.ach-bottom { align-self: end; padding-top: 14px; border-top: 1px solid var(--color-divider); font-size: 13px; }
 .ach-open { color: var(--color-accent-strong); font-weight: 600; white-space: nowrap; }
 @media (max-width: 900px) { .ach-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 620px) {
   .ach-grid { grid-template-columns: 1fr; }
-  .ach-content h3, .ach-detail { min-height: 0; }
+  .ach-content { grid-template-rows: none; }
 }
 
 /* ---------- Райтапы ---------- */

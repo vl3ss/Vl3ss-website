@@ -138,18 +138,18 @@ const ACHIEVEMENTS = [
   },
   {
     kind: 'Стажировка', year: '2026', title: 'Positive Technologies',
-    detail: 'Теория и практические задания по кибербезопасности',
+    detail: 'Программа стажировки и практические задания по кибербезопасности',
     image: 'assets/achievements/positive-technologies.webp',
     pdf: 'assets/achievements/positive-technologies.pdf',
   },
   {
-    kind: 'Обучение', year: '2026', title: 'Контейнеризация с Docker',
-    detail: 'Yandex Cloud Training & Certification',
+    kind: 'Обучение', year: '2026', title: 'Yandex Cloud',
+    detail: 'Курс «Контейнеризация с Docker»',
     image: 'assets/achievements/yandex-docker.webp',
     pdf: 'assets/achievements/yandex-docker.pdf',
   },
   {
-    kind: 'Благодарность', year: '2026', title: 'Конференция «Код ИБ»',
+    kind: 'Благодарность', year: '2026', title: 'Код ИБ',
     detail: 'За помощь в подготовке и проведении конференции',
     image: 'assets/achievements/kod-ib.webp',
     pdf: 'assets/achievements/kod-ib.pdf',
@@ -316,7 +316,7 @@ function renderAchievements() {
     <a class="ach-card reveal" href="${esc(g.pdf)}" target="_blank" rel="noopener">
       <div class="ach-preview"><img src="${esc(g.image)}" alt="" loading="lazy"></div>
       <div class="ach-content">
-        <div class="ach-top"><span class="tag tag-accent">${esc(g.kind)}</span><span>${esc(g.year)}</span></div>
+        <div class="ach-top"><span class="ach-kind">${esc(g.kind)}</span><span>${esc(g.year)}</span></div>
         <h3>${esc(g.title)}</h3>
         <p class="ach-detail">${esc(g.detail)}</p>
         <div class="ach-bottom"><span class="ach-open">Смотреть PDF ↗</span></div>
