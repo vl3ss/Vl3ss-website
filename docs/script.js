@@ -90,6 +90,7 @@ const RESULTS = [
   { name: 'Kaspersky CTF', year: 2026, place: 62, teams: 350 },
   { name: 'AvitoCTF', year: 2026, place: 79, teams: 350 },
   { name: 'Кубок Федерации', year: 2026, place: 112, teams: 350 },
+  { name: 'X Кубок CTF России', year: 2026, place: 135, teams: 708 },
   { name: 'SolarCTF', year: 2026, place: 139, teams: 900 },
 ];
 
@@ -118,6 +119,11 @@ const WRITEUPS = [
 ];
 
 const ACHIEVEMENTS = [
+  {
+    kind: 'Соревнование', year: '2026', title: 'Nuclear IT Hack',
+    detail: 'Сертификат участника · команда «Бестиарий» · 6–8 марта 2026',
+    image: 'assets/achievements/nuclear-it-hack-2026-blurred.jpg',
+  },
   {
     kind: 'CTF', year: '2026', title: 'SolarCTF',
     detail: 'Сертификат участия · команда Vl3ss',
@@ -313,13 +319,13 @@ function renderWriteups() {
 // ---------- Достижения ----------
 function renderAchievements() {
   $('#achGrid').innerHTML = ACHIEVEMENTS.map((g) => `
-    <a class="ach-card reveal" href="${esc(g.pdf)}" target="_blank" rel="noopener">
+    <a class="ach-card reveal" href="${esc(g.pdf || g.image)}" target="_blank" rel="noopener">
       <div class="ach-top"><span class="ach-kind">${esc(g.kind)}</span><span>${esc(g.year)}</span></div>
       <div class="ach-preview"><img src="${esc(g.image)}" alt="" loading="lazy"></div>
       <div class="ach-content">
         <h3>${esc(g.title)}</h3>
         <p class="ach-detail">${esc(g.detail)}</p>
-        <div class="ach-bottom"><span class="ach-open">Смотреть PDF ↗</span></div>
+        <div class="ach-bottom"><span class="ach-open">${g.pdf ? 'Смотреть PDF' : 'Смотреть сертификат'} ↗</span></div>
       </div>
     </a>`).join('');
 }
