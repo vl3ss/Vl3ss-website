@@ -225,6 +225,32 @@ main { max-width: 1200px; margin: 0 auto; padding: 0 var(--gutter); }
 .results .place-total { color: var(--color-muted); font-size: 14px; }
 .results .empty { padding: 28px 0; color: var(--color-muted); font-style: italic; }
 
+.platform-card {
+  display: flex; align-items: center; gap: 20px;
+  margin-top: 28px; padding: 22px 26px;
+  border: 1px solid var(--color-divider); border-radius: var(--radius-lg);
+  background: var(--color-accent-soft); color: var(--color-text); text-decoration: none;
+  transition: border-color .2s, box-shadow .2s, transform .2s;
+}
+.platform-card:hover { color: var(--color-text); border-color: var(--color-accent); box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.platform-card:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; }
+.platform-card-mark {
+  flex: none; display: grid; place-items: center;
+  width: 54px; height: 54px; border: 1px solid var(--color-accent); border-radius: var(--radius-md);
+  color: var(--color-accent-strong); font-family: var(--font-heading); font-size: 31px;
+}
+.platform-card-copy { display: grid; gap: 3px; min-width: 0; }
+.platform-card-copy .eyebrow { margin: 0; font-size: 11px; }
+.platform-card-copy strong { font-family: var(--font-heading); font-size: 27px; font-weight: 600; line-height: 1.1; }
+.platform-card-copy > span:last-child { color: var(--color-muted); font-size: 14px; }
+.platform-card-arrow { margin-left: auto; color: var(--color-accent-strong); font-size: 28px; }
+@media (max-width: 480px) {
+  .platform-card { gap: 14px; padding: 18px; }
+  .platform-card-mark { width: 42px; height: 42px; font-size: 24px; }
+  .platform-card-copy strong { font-size: 23px; }
+  .platform-card-arrow { display: none; }
+}
+
 /* ---------- Достижения ---------- */
 .ach-intro { max-width: 60ch; margin: -18px 0 28px; color: var(--color-muted); font-size: 16px; }
 .ach-grid { display: grid; gap: 24px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
@@ -333,7 +359,7 @@ main { max-width: 1200px; margin: 0 auto; padding: 0 var(--gutter); }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .reveal { opacity: 1; transform: none; transition: none; transition-delay: 0s !important; }
-  .card:hover, .card:active, .ach-card:hover { transform: none; }
+  .card:hover, .card:active, .ach-card:hover, .platform-card:hover { transform: none; }
   .theme-toggle:hover { transform: none; }
 }
 
